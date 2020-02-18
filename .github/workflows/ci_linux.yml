@@ -10,24 +10,26 @@ jobs:
   build_libs:
 
     runs-on: ubuntu-18.04
+    container: ubuntu:19.10
 
     steps:
     - uses: actions/checkout@v2
+    - uses: docker://ubuntu:19.10
 
     - name: Install dependencies
       run: |
-        sudo apt-get -y update
-        sudo apt-get -y install build-essential
-        sudo apt-get -y install pkg-config python-pip python-virtualenv
-        sudo apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
+        apt-get -y --force-yes update
+        apt-get -y install build-essential
+        apt-get -y install pkg-config python-pip python-virtualenv
+        apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
 
     - name: Run tests
       run: |
-        sudo make -j$(($(nproc)+1)) test
+        make -j$(($(nproc)+1)) test
     - name: Clean
       run: |
-        sudo make -j$(($(nproc)+1)) clean
+        make -j$(($(nproc)+1)) clean
     - name: Run memory tests 
       run: |
-        sudo make -j$(($(nproc)+1)) testmem DEBUG=yes
+        make -j$(($(nproc)+1)) testmem DEBUG=yes
 
