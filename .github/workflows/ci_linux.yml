@@ -19,15 +19,15 @@ jobs:
         sudo apt-get -y update
         sudo apt-get -y install build-essential
         sudo apt-get -y install pkg-config python-pip python-virtualenv
-        apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
+        sudo apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
 
     - name: Run tests
       run: |
-        make -j$(($(nproc)+1)) test
+        sudo make -j$(($(nproc)+1)) test
     - name: Clean
       run: |
-        make -j$(($(nproc)+1)) clean
+        sudo make -j$(($(nproc)+1)) clean
     - name: Run memory tests 
       run: |
-        make -j$(($(nproc)+1)) testmem DEBUG=yes
+        sudo make -j$(($(nproc)+1)) testmem DEBUG=yes
 
