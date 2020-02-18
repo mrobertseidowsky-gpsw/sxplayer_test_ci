@@ -19,7 +19,7 @@ jobs:
         sudo apt-get -y update
         sudo apt-get -y install build-essential
         sudo apt-get -y install pkg-config python-pip python-virtualenv
-        sudo apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
+        apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
 
     - name: Run tests
       run: |
