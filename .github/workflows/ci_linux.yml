@@ -20,8 +20,9 @@ jobs:
       run: |
         apt-get -y --force-yes update
         apt-get -y install build-essential
-        apt-get -y install pkg-config python-pip python-virtualenv
-        apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev valgrind
+        apt-get -y install pkg-config
+        apt-get -y install libavcodec-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libswresample-dev libpostproc-dev
+        apt-get -y install valgrind
 
     - name: Run tests
       run: |
